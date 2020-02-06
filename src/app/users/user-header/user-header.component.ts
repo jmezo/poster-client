@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ImageService } from 'src/app/posts/image.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-header',
@@ -8,9 +10,17 @@ import { Component, OnInit, Input } from '@angular/core';
 export class UserHeaderComponent implements OnInit {
   @Input() username: string;
   @Input() height: string= "50px";
-  imageRef: string = 'https://images-na.ssl-images-amazon.com/images/I/513vjQ3OzFL._AC_SX522_.jpg';
-  constructor() { }
+  imageRef: any = 'https://images-na.ssl-images-amazon.com/images/I/513vjQ3OzFL._AC_SX522_.jpg';
+  constructor(private userService: UserService, private imageService: ImageService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.userService.checkHasImage(this.username).subscribe(hasImage => {
+      if (hasImage) {
+        this.imageService.getUserImage(this.username).subscribe( image => {
+          this.imageRef = image;
+        });
+      }
+    });
+  }
 
 }

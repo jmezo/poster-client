@@ -63,9 +63,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     if (this.signUpForm.invalid) return;
-    this.userService.createUser(
-      this.signUpForm.get('username').value,
-      this.signUpForm.get('password').value).subscribe(res => {
+    this.userService.createUser(this.createFormData()).subscribe(res => {
       console.log(res);
     });
     this.signUpForm.reset();
@@ -77,6 +75,16 @@ export class SignupComponent implements OnInit {
 
   get password() {
     return this.signUpForm.get('password');
+  }
+
+  private createFormData() {
+    const fd = new FormData();
+    fd.append('username', this.username.value);
+    fd.append('password', this.password.value);
+    if (this.profilePicture != null) {
+      fd.append('image', this.profilePicture.file);
+    }
+    return fd;
   }
   
 }

@@ -10,12 +10,11 @@ export class UserService {
     return this.http.get<boolean>('http://localhost:8080/users/checkUsername/' + username);
   }
 
-  createUser(username: string, password: string) {
-    return this.http.post(
-      'http://localhost:8080/users',
-      {
-        'username': username,
-        'password': password
-      });
+  checkHasImage(username: string) {
+    return this.http.get<boolean>('http://localhost:8080/users/checkImage/' + username);
+  }
+
+  createUser(formData: FormData) {
+    return this.http.post('http://localhost:8080/users', formData);
   }
 }
