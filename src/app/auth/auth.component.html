@@ -24,10 +24,11 @@
     <div *ngIf="!!error">{{ error }}</div>
     <button
       *ngIf="!isLoading"
-      mat-button
+      mat-raised-button color="primary"
       type="submit"
       [disabled]="!authForm.valid"
       >Login</button>
-      <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <button mat-button (click)="onSignUp()">or Sign Up</button>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
   </form>
 </div>
