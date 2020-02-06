@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { UserService } from '../users/user.service';
+import { map, catchError } from 'rxjs/operators';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -40,16 +41,10 @@ export class SignupComponent implements OnInit {
   }
 
   checkUsername(control: FormControl): Promise<any> | Observable<any> {
-    const promise = new Promise<any>((resolve, reject) => {
-      this.userService.checkUsernameExists(control.value).subscribe(val => {
-        if (val) {
-          resolve({'usernameTaken': true});
-        } else {
-          resolve(null);
-        }
-      })
-    });
-    return promise;
+    return this.userService.checkUsernameExists(control.value).pipe(
+      map(exists => exists ? { 'usernameTaken': true } : null),
+      catchError(() => null)
+    );
   }
 
   onSelectImage(imageInput: any) {
