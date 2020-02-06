@@ -1,0 +1,19 @@
+.app-add-comment-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-date {
+  font-size: smaller;
+  margin: 2px;
+}
+
+.example-viewport {
+  height: 270px;
+  width: 474px;
+  border: 1px solid black;
+}
+
+.example-item {
+  height: 50px;
+}

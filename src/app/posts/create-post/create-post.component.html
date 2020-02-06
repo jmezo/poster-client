@@ -1,0 +1,63 @@
+<div class="container">
+  <mat-expansion-panel #panel>
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>post something</mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-container">
+
+        <mat-form-field>
+          <textarea class="app-textarea"
+            matInput
+            name="postText"
+            [(ngModel)]="postText"
+            placeholder="your text"
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"
+            maxlength="200"
+            ></textarea>
+        </mat-form-field>
+
+        <div class="select-image-box">
+            <button
+              *ngIf="!selectedImage"
+              mat-raised-button
+              type="button"
+              (click)="imageInput.click()"
+              >Add image</button>
+            <button 
+              *ngIf="!!selectedImage"
+              mat-icon-button aria-label="remove img"
+              (click)="onRemoveImage()">
+              <mat-icon>highlight_off</mat-icon>
+            </button>
+            <input
+              #imageInput
+              hidden
+              accept="image/*"
+              (change)="onSelectImage(imageInput)"
+              type="file" id="file">
+        </div>
+
+        <div class="image-box" *ngIf="!!selectedImage">
+          <img
+            [src]="selectedImage.src"
+            alt="uploaded file"
+            height="200px">
+        </div>
+
+        <div class="submit-button">
+          <button
+            mat-raised-button color="primary"
+            [disabled]="!postText && !selectedImage"
+            type="submit">post</button>
+        </div>
+
+      </div>  
+    </form>
+  
+  </mat-expansion-panel>
+</div>

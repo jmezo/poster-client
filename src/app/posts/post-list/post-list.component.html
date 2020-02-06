@@ -1,0 +1,11 @@
+<div class="app-container" [style.width]="numOfCols == 1 ? '550px' : '1100px'">
+  <mat-grid-list [cols]="numOfCols" rowHeight="280px">
+    <mat-grid-tile *ngFor="let post of posts" [rowspan]="post.hasImage ? 2 : 1">
+      <mat-card class="app-mat-card">
+
+        <app-post-list-item [post]="post"></app-post-list-item>
+        
+      </mat-card>
+    </mat-grid-tile> 
+  </mat-grid-list>
+</div>

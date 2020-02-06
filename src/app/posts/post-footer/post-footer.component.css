@@ -1,0 +1,11 @@
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.like-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

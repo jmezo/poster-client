@@ -1,0 +1,14 @@
+<div>
+  <div class="header">
+    <app-user-header [username]="post.creator" [height]="'50px'"></app-user-header>
+    <button 
+    *ngIf="canDeletePost"
+    (click)="onDeletePost()"
+    mat-icon-button aria-label="delete post">
+    <mat-icon>highlight_off</mat-icon>
+  </button>
+  </div>
+  <app-post [post]="post"></app-post>
+  <app-post-footer [post]="post"></app-post-footer>
+  <app-comment [postId]="post.id"></app-comment>
+</div>

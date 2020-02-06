@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-card-content>
+    <mat-form-field class="app-add-comment-container">
+      <textarea
+        matInput
+        id="commentText"
+        [(ngModel)]="commentText"
+        placeholder="your comment"
+        maxlength="200"
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="10"
+        ></textarea>
+    </mat-form-field>
+    <button mat-button (click)="onAddComment()">comment</button>
+  </mat-card-content>
+</mat-card>
+
+<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport" *ngIf="!!comments && comments.length > 0">
+  <mat-card *cdkVirtualFor="let comment of comments">
+    <app-user-header [username]="comment.commenter"></app-user-header>
+    <mat-card-content>
+      <p>{{ comment.text }}</p>
+    </mat-card-content>
+    <mat-card-footer class="footer-date">
+      {{ comment.creationDate | date : 'd/M/yy, HH:mm'}}
+    </mat-card-footer>
+  </mat-card>
+</cdk-virtual-scroll-viewport>
+
+

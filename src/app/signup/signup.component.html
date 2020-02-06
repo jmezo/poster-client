@@ -1,0 +1,67 @@
+<div>
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div class="form-container">
+      
+      <mat-form-field class="field-full-width">
+        <input
+          matInput
+          id="username"
+          formControlName="username"
+          placeholder="username"
+          type="text">
+      </mat-form-field>
+      <div>
+        <span *ngIf="signUpForm.get('username').touched && !signUpForm.get('username').valid">username not valid</span>
+        <!-- <span *ngIf="signupForm.get('username').errors['minLength']">This name is invalid!</span> -->
+        <!-- <span *ngIf="signupForm.get('username').errors['required']">This field is required!</span> -->
+      </div>
+
+      <mat-form-field class="field-full-width">
+        <input
+          matInput
+          id="password"
+          formControlName="password"
+          placeholder="password"
+          type="password">
+      </mat-form-field>
+      <div *ngIf="signUpForm.get('password').touched && !signUpForm.get('password').valid">
+        <span >password not valid</span>
+      </div>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit">Signup</button>
+      
+      <div class="select-image-box">
+        <button
+          *ngIf="!profilePicture"
+          mat-raised-button
+          type="button"
+          (click)="imageInput.click()"
+          >Add image</button>
+        <button 
+          *ngIf="!!profilePicture"
+          mat-icon-button aria-label="remove img"
+          (click)="onRemoveImage()">
+          <mat-icon>highlight_off</mat-icon>
+        </button>
+        <input
+          #imageInput
+          hidden
+          accept="image/*"
+          (change)="onSelectImage(imageInput)"
+          type="file" id="file">
+      </div>
+      
+      <div class="container" *ngIf="!!profilePicture">
+        <img
+          [src]="profilePicture.src"
+          alt="uploaded image"
+          height="200px">
+      </div>
+
+    </div>
+  </form>
+</div>
+

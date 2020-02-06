@@ -1,0 +1,5 @@
+<div>
+  <app-user-header [username]="post.creator" [height]="'50px'"></app-user-header>
+  <app-post [post]="post" (click)="openPostInDialog(post)"></app-post>
+  <app-post-footer [post]="post"></app-post-footer>
+</div>

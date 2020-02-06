@@ -1,0 +1,22 @@
+.container {
+  height: 50px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+img {
+  border-radius: 50%;
+  max-width: 80%;
+  max-height: 80%;
+  margin-right: 10px;
+}
+
+.name {
+  flex-grow: 2;
+  font-weight: bold;
+}
+
+
+/* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */

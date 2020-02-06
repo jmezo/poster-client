@@ -1,0 +1,19 @@
+<div class="post-body">
+
+  <div *ngIf="post.hasImage" class="image-box" [style.height]="!!post.text ? '280px' : '360px'">
+    <img
+      *ngIf="!isImageLoading && !!imageToShow"
+      [src]="imageToShow"
+      alt="Photo of a Shiba Inu">
+    <img
+      *ngIf="!isImageLoading && !imageToShow"
+      src="https://pics.me.me/father-i-crave-violence-61305874.png"
+      alt="no image found">
+    <mat-spinner *ngIf="isImageLoading"></mat-spinner>
+  </div>
+
+  <div class="post-text" *ngIf="!!post.text">
+    {{ post.text }}
+  </div>
+  
+</div>

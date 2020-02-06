@@ -1,0 +1,33 @@
+<div class="form-container">
+  <form class="user-form" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+    <mat-form-field class="field-full-width">
+      <input
+        matInput
+        id="username"
+        name="username"
+        ngModel
+        required
+        matInput
+        placeholder="username"
+        type="text">
+    </mat-form-field>
+    <mat-form-field class="field-full-width">
+      <input
+        id="password"
+        name="password"
+        ngModel
+        required  
+        matInput
+        placeholder="password"
+        type="password">
+    </mat-form-field>
+    <div *ngIf="!!error">{{ error }}</div>
+    <button
+      *ngIf="!isLoading"
+      mat-button
+      type="submit"
+      [disabled]="!authForm.valid"
+      >Login</button>
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </form>
+</div>
