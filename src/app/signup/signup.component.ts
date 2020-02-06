@@ -24,19 +24,26 @@ export class SignupComponent implements OnInit {
         [
           Validators.required,
           Validators.maxLength(10),
-          // Validators.pattern(`[a-zA-Z0-9]+`),
+          Validators.pattern(`[a-zA-Z0-9]+`),
           Validators.minLength(3)
-        ]),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
+        ], this.checkUsername.bind(this)),
+      'password': new FormControl(null, [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(20)
+      ])
     });
     console.log(this.signUpForm.get('username'));
+    
+    this.signUpForm.statusChanges.subscribe(status => {
+    });
   }
 
   checkUsername(control: FormControl): Promise<any> | Observable<any> {
     const promise = new Promise<any>((resolve, reject) => {
       this.userService.checkUsernameExists(control.value).subscribe(val => {
         if (val) {
-          resolve({'usernameIsTaken': true});
+          resolve({'usernameTaken': true});
         } else {
           resolve(null);
         }
@@ -60,11 +67,21 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.signUpForm);
-    this.userService.createUser(this.signUpForm.get('username').value, this.signUpForm.get('password').value).subscribe(res => {
+    if (this.signUpForm.invalid) return;
+    this.userService.createUser(
+      this.signUpForm.get('username').value,
+      this.signUpForm.get('password').value).subscribe(res => {
       console.log(res);
     });
     this.signUpForm.reset();
+  }
+
+  get username() {
+    return this.signUpForm.get('username');
+  }
+
+  get password() {
+    return this.signUpForm.get('password');
   }
   
 }
