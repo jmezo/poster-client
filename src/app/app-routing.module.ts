@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SignupComponent } from './signup/signup.component';
 
 const appRoutes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: AuthComponent },
   { path: 'signup', component:SignupComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },

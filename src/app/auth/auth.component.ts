@@ -15,6 +15,9 @@ export class AuthComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+    if (this.authService.user.getValue() != null) {
+      this.router.navigate(['home']);
+    }
   }
 
   onSubmit(form: NgForm) {
