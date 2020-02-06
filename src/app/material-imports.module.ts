@@ -12,6 +12,7 @@ import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 const materialImports = [
   MatFormFieldModule,
@@ -25,7 +26,8 @@ const materialImports = [
   TextFieldModule,
   MatExpansionModule,
   MatIconModule,
-  ScrollingModule
+  ScrollingModule,
+  MatSnackBarModule
 ]
 
 @NgModule({

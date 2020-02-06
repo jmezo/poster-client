@@ -1,6 +1,6 @@
 .form-container {
-  width: 500px;
-  height: 600px;
+  width: 290px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,6 +9,7 @@
 
 .field-full-width {
   width: 100%;
+  margin-right: 10px;
 }
 
 .select-image-box {
@@ -27,7 +28,6 @@ img {
   border-radius: 50%;
   width: 200px;
   height: 200px;
-  margin-right: 10px;
 }
 
 /* .user-form {

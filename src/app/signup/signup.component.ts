@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { UserService } from '../users/user.service';
 import { map, catchError } from 'rxjs/operators';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -17,7 +18,9 @@ export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
   profilePicture: ImageSnippet;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    public dialogRef: MatDialogRef<SignupComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
     this.signUpForm = new FormGroup({
@@ -67,6 +70,7 @@ export class SignupComponent implements OnInit {
       console.log(res);
     });
     this.signUpForm.reset();
+    this.dialogRef.close({username: this.username.value, password: this.password.value});
   }
 
   get username() {

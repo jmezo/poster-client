@@ -55,7 +55,8 @@ import { SignupComponent } from './signup/signup.component';
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent],
   entryComponents: [
-    DetailedPostComponent
+    DetailedPostComponent,
+    SignupComponent
   ]
 })
 export class AppModule { }
