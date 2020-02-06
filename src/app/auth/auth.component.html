@@ -1,5 +1,8 @@
 <div class="form-container">
   <form class="user-form" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+    <div class="title-container">
+      <h1>poster</h1>
+    </div>
     <mat-form-field class="field-full-width">
       <input
         matInput
@@ -21,14 +24,16 @@
         placeholder="password"
         type="password">
     </mat-form-field>
-    <div *ngIf="!!error">{{ error }}</div>
+    <div *ngIf="!!error" class="error-div">{{ error }}</div>
     <button
       *ngIf="!isLoading"
       mat-raised-button color="primary"
       type="submit"
       [disabled]="!authForm.valid"
       >Login</button>
-    <button mat-button (click)="onSignUp()">or Sign Up</button>
-    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <button mat-button (click)="onSignUp()" *ngIf="!isLoading">or Sign Up</button>
+    <div class="spinner-container">
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+    </div>
   </form>
 </div>

@@ -5,6 +5,9 @@
   margin: auto;
 }
 
+.title-container {
+}
+
 .field-full-width {
   width: 100%;
 }
@@ -13,5 +16,17 @@
   width: 100%;
   height: 100%;
   display: flex;
+  align-items: center;
+}
+
+.error-div {
+  margin-bottom: 10px;
+  color: red;
+}
+
+.spinner-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }

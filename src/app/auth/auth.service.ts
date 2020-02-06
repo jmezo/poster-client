@@ -88,7 +88,7 @@ export class AuthService {
     }
     switch (errorRes.error.error) {
       case 'invalid_grant':
-        errorMessage = 'bad credentials';
+        errorMessage = 'Incorrect username or password!';
     }
     return throwError(errorMessage);
   }

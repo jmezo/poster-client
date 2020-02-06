@@ -32,10 +32,16 @@ export class AuthComponent implements OnInit {
     const password = form.value.password;
     this.authService.login(username, password)
       .subscribe(
-        token => {this.isLoading = false; this.router.navigate(['/home'])},
-        error => {this.isLoading = false; this.error = error;}
+        token => {
+          this.isLoading = false;
+          this.router.navigate(['/home']);
+        },
+        error => {
+          this.isLoading = false;
+          this.error = error;
+          form.reset();
+        }
       );
-    // form.reset();
   }
 
   onSignUp() {
