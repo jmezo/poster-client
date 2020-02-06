@@ -82,7 +82,7 @@ export class AuthService {
 
   private handleError(errorRes: HttpErrorResponse) {
     console.log(errorRes)
-    let errorMessage = 'unknown error';
+    let errorMessage = 'The server is currently unavailable.';
     if (!errorRes.error || ! errorRes.error.error) {
       return throwError(errorMessage);
     }
