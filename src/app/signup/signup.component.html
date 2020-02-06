@@ -27,11 +27,6 @@
       <div *ngIf="signUpForm.get('password').touched && !signUpForm.get('password').valid">
         <span >password not valid</span>
       </div>
-
-      <button
-        mat-raised-button
-        color="primary"
-        type="submit">Signup</button>
       
       <div class="select-image-box">
         <button
@@ -54,14 +49,19 @@
           type="file" id="file">
       </div>
       
-      <div class="container" *ngIf="!!profilePicture">
+      <div class="img-box" *ngIf="!!profilePicture">
         <img
           [src]="profilePicture.src"
           alt="uploaded image"
           height="200px">
       </div>
 
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit">Signup</button>
     </div>
+
   </form>
 </div>
 
