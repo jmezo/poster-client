@@ -2,4 +2,10 @@
   [style.height]="height">
   <img [src]="imageRef" alt="Avatar" [style.width]="height" [style.height]="height">
   <div class="name">{{ username }}</div>
+  <button
+    *ngIf="enableFollow && !isCurrentUser"
+    mat-stroked-button
+    class="follow-btn"
+    [color]="isFollowing ? 'basic' : 'basic'"
+    (click)="onClickFollow()">{{ isFollowing ? 'Following' : 'Follow'}}</button>
 </div>

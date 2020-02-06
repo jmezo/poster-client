@@ -16,5 +16,12 @@ img {
   font-weight: bold;
 }
 
+.follow-btn {
+  margin-left: 10px;
+  width: fit-content;
+  width: fit-content;
+  font-size: smaller;
+}
+
 
 /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */

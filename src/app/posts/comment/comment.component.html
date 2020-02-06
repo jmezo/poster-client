@@ -18,7 +18,7 @@
 
 <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport" *ngIf="!!comments && comments.length > 0">
   <mat-card *cdkVirtualFor="let comment of comments">
-    <app-user-header [username]="comment.commenter"></app-user-header>
+    <app-user-header [username]="comment.commenter" [enableFollow]="false"></app-user-header>
     <mat-card-content>
       <p>{{ comment.text }}</p>
     </mat-card-content>
