@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ImageService } from 'src/app/posts/image.service';
 import { UserService } from '../user.service';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/auth/auth.service';
   templateUrl: './user-header.component.html',
   styleUrls: ['./user-header.component.css']
 })
-export class UserHeaderComponent implements OnInit {
+export class UserHeaderComponent implements OnInit{
   @Input() username: string;
   @Input() height: string= "50px";
   imageRef: any = 'https://images-na.ssl-images-amazon.com/images/I/513vjQ3OzFL._AC_SX522_.jpg';
@@ -20,6 +20,10 @@ export class UserHeaderComponent implements OnInit {
 
   ngOnInit() {
     this.isCurrentUser = this.authservice.user.getValue().username == this.username;
+    this.userService.followingSub.subscribe(usersImFollowing => {
+      this.isFollowing = usersImFollowing.indexOf(this.username) > -1;
+    })
+
     this.userService.checkHasImage(this.username).subscribe(hasImage => {
       if (hasImage) {
         this.imageService.getUserImage(this.username).subscribe( image => {
@@ -31,5 +35,7 @@ export class UserHeaderComponent implements OnInit {
 
   onClickFollow() {
     this.isFollowing = !this.isFollowing;
+    this.userService.setFollowing(this.username);
   }
+
 }
