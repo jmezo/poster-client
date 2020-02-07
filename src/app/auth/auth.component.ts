@@ -46,7 +46,7 @@ export class AuthComponent implements OnInit {
 
   onSignUp() {
     const dialogRef = this.dialog.open(SignupComponent, {
-      width: '320px',
+      width: '350px',
     });
 
     dialogRef.afterClosed().subscribe(result => {

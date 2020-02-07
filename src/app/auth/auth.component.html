@@ -1,39 +1,43 @@
 <div class="form-container">
   <form class="user-form" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
-    <div class="title-container">
-      <h1>poster</h1>
-    </div>
-    <mat-form-field class="field-full-width">
-      <input
-        matInput
-        id="username"
-        name="username"
-        ngModel
-        required
-        matInput
-        placeholder="username"
-        type="text">
-    </mat-form-field>
-    <mat-form-field class="field-full-width">
-      <input
-        id="password"
-        name="password"
-        ngModel
-        required
-        matInput
-        placeholder="password"
-        type="password">
-    </mat-form-field>
-    <div *ngIf="!!error" class="error-div">{{ error }}</div>
-    <button
-      *ngIf="!isLoading"
-      mat-raised-button color="primary"
-      type="submit"
-      [disabled]="!authForm.valid"
-      >Login</button>
-    <button mat-button (click)="onSignUp()" *ngIf="!isLoading">or Sign Up</button>
-    <div class="spinner-container">
-      <mat-spinner *ngIf="isLoading"></mat-spinner>
-    </div>
+    <mat-card>
+
+      <div class="title-container">
+        <h1>poster</h1>
+      </div>
+      <mat-form-field class="field-full-width">
+        <input
+          matInput
+          id="username"
+          name="username"
+          ngModel
+          required
+          matInput
+          placeholder="username"
+          type="text">
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input
+          id="password"
+          name="password"
+          ngModel
+          required
+          matInput
+          placeholder="password"
+          type="password">
+      </mat-form-field>
+      <div *ngIf="!!error" class="error-div">{{ error }}</div>
+      <button
+        *ngIf="!isLoading"
+        mat-raised-button color="primary"
+        type="submit"
+        [disabled]="!authForm.valid"
+        >Login</button>
+      <button mat-button (click)="onSignUp()" *ngIf="!isLoading">or Sign Up</button>
+      <div class="spinner-container">
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+      </div>
+
+    </mat-card>
   </form>
 </div>
