@@ -1,5 +1,8 @@
 <mat-toolbar>
   <app-user-header [username]="user.username" [height]="'70px'"></app-user-header>
   <span class="fill-remaining-space"></span>
+  <button mat-flat-button (click)="onClickFilter()">filter following: {{ filterFollowing ? 'ON' : 'OFF' }}</button>
+  <button mat-flat-button (click)="onClickSort()">sortby {{sortBy}}</button>
+  <span class="fill-remaining-space"></span>
   <span><button mat-button (click)="onLogout()">logout</button></span>
 </mat-toolbar>

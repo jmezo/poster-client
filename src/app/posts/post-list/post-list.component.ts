@@ -19,7 +19,8 @@ export class PostListComponent implements OnInit {
   ngOnInit() {
     this.numOfCols = (window.innerWidth <= 1100) ? 1 : 2;
     this.postSub = this.postService.posts.subscribe(posts => {this.posts = posts;});
-    this.postService.fetchPosts();
+    // this.postService.fetchPosts();
+    this.postService.fetchPostsWithQuery();
   }
 
   @HostListener('window:resize', ['$event'])
