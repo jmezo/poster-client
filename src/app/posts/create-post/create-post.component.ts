@@ -16,6 +16,7 @@ export class CreatePostComponent implements OnInit {
   username: string;
   postText: string;
   selectedImage: ImageSnippet;
+  isImageTooLarge: boolean = false;
   @ViewChild('panel', {static: true}) panel: MatExpansionPanel;
 
   constructor(private authService: AuthService, private postService: PostService) { }
@@ -26,6 +27,9 @@ export class CreatePostComponent implements OnInit {
 
   onSelectImage(imageInput: any) {
     const file: File = imageInput.files[0];
+    if (file.size > 999999) {
+      this.isImageTooLarge = true;
+    }
     const reader = new FileReader();
 
     reader.addEventListener('load', (event: any) => {
@@ -36,6 +40,7 @@ export class CreatePostComponent implements OnInit {
 
   onRemoveImage() {
     this.selectedImage = null;
+    this.isImageTooLarge = false;
   }
 
   onSubmit() {

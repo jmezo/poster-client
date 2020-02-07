@@ -30,10 +30,7 @@ img {
   height: 200px;
 }
 
-/* .user-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-  margin: auto;
+.image-error {
+  color: red;
+  margin: 10px;
 }
-*/

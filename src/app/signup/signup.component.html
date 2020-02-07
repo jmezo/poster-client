@@ -63,9 +63,13 @@
           height="200px">
       </div>
 
+      <div *ngIf="isImageTooLarge" class="image-error">
+        This image is too large.
+      </div>
+
       <button
         mat-raised-button
-        [disabled]="signUpForm.invalid"
+        [disabled]="signUpForm.invalid || isImageTooLarge"
         color="primary"
         type="submit">Signup</button>
     </div>

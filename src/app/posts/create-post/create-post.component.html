@@ -49,10 +49,14 @@
             height="200px">
         </div>
 
+        <div *ngIf="isImageTooLarge" class="image-error">
+          This image is too large.
+        </div>
+
         <div class="submit-button">
           <button
             mat-raised-button color="primary"
-            [disabled]="!postText && !selectedImage"
+            [disabled]="!postText && !selectedImage || isImageTooLarge"
             type="submit">post</button>
         </div>
 

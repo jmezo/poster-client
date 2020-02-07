@@ -17,6 +17,7 @@ class ImageSnippet {
 export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
   profilePicture: ImageSnippet;
+  isImageTooLarge: boolean = false;
 
   constructor(private userService: UserService,
     public dialogRef: MatDialogRef<SignupComponent>,
@@ -52,6 +53,9 @@ export class SignupComponent implements OnInit {
 
   onSelectImage(imageInput: any) {
     const file: File = imageInput.files[0];
+    if (file.size > 999999) {
+      this.isImageTooLarge = true;
+    }
     const reader = new FileReader();
 
     reader.addEventListener('load', (event: any) => {
@@ -62,6 +66,7 @@ export class SignupComponent implements OnInit {
 
   onRemoveImage() {
     this.profilePicture = null;
+    this.isImageTooLarge = false;
   }
 
   onSubmit() {
