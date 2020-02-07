@@ -1,5 +1,5 @@
 <div class="post-footer">
-  <span>{{ post.numOfComments }} {{ post.numOfComments === 1 ? 'like' : 'comments' }}</span>
+  <span>{{ post.numOfComments }} {{ post.numOfComments === 1 ? 'comment' : 'comments' }}</span>
   <span>{{ post.creationDate | date : 'd/M/yy, HH:mm' }}</span>
   <div class="like-box">
     <div>{{ likes.length }} {{ likes.length === 1 ? 'like' : 'likes' }}</div>
